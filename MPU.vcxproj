@@ -127,23 +127,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Analysis_Manager.cpp" />
-    <ClCompile Include="IOManager.h" />
-    <ClCompile Include="IO_Manager.cpp" />
-    <ClCompile Include="MPU.cpp" />
-    <ClCompile Include="TransmitterSensor.h" />
-    <ClCompile Include="BaseComponent.h" />
-    <ClCompile Include="UIManager.h" />
-    <ClCompile Include="UI_Manager.cpp" />
+    <ClCompile Include="src\analysis\Analysis_Manager.cpp" />
+    <ClCompile Include="include\io\IOManager.h" />
+    <ClCompile Include="src\io\IO_Manager.cpp" />
+    <ClCompile Include="src\mpu\MPU.cpp" />
+    <ClCompile Include="include\io\Sensors\TransmitterSensor.h" />
+    <ClCompile Include="include\ui\Components\BaseComponent.h" />
+    <ClCompile Include="include\ui\UIManager.h" />
+    <ClCompile Include="src\ui\UI_Manager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="temp.json" />
+    <None Include="resources\temp.json" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="configManager.h" />
-    <ClInclude Include="errorCodes.h" />
-    <ClInclude Include="logger.h" />
-    <ClInclude Include="SensorTypes.h" />
+    <ClInclude Include="include\util\configManager.h" />
+    <ClInclude Include="include\enums\errorCodes.h" />
+    <ClInclude Include="include\util\logger.h" />
+    <ClInclude Include="include\enums\SensorTypes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

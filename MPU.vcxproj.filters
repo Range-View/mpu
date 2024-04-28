@@ -9,13 +9,13 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="src\IO">
+    <Filter Include="src\io">
       <UniqueIdentifier>{51ab820a-e706-43d7-b3e8-72048d01b7a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Analysis">
+    <Filter Include="src\analysis">
       <UniqueIdentifier>{4e467708-9f1c-4caf-a4cf-0748117da817}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\UI">
+    <Filter Include="src\ui">
       <UniqueIdentifier>{991b45f1-aa34-4717-ab22-3fe5a7d476b1}</UniqueIdentifier>
     </Filter>
     <Filter Include="resources">
@@ -37,43 +37,43 @@
     <Filter Include="include\util">
       <UniqueIdentifier>{056d8b53-cba4-484d-b1a9-7819fae19754}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\IO">
+    <Filter Include="include\io">
       <UniqueIdentifier>{0fbde573-f30b-4782-9044-5c7e7d243ea5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\IO\Sensors">
+    <Filter Include="include\io\sensors">
       <UniqueIdentifier>{7d36fe4c-f292-4699-8e42-03e029cbec3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\UI">
+    <Filter Include="include\ui">
       <UniqueIdentifier>{7133278d-22ef-426e-8f43-fdfab99bcb69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\UI\Components">
+    <Filter Include="include\ui\components">
       <UniqueIdentifier>{1fe35df2-e2a5-4139-a5f4-f83c6ef965ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MPU.cpp">
-      <Filter>src</Filter>
+      <Filter>src\mpu</Filter>
     </ClCompile>
     <ClCompile Include="IO_Manager.cpp">
-      <Filter>src\IO</Filter>
+      <Filter>src\io</Filter>
     </ClCompile>
     <ClCompile Include="Analysis_Manager.cpp">
-      <Filter>src\Analysis</Filter>
+      <Filter>src\analysis</Filter>
     </ClCompile>
     <ClCompile Include="UI_Manager.cpp">
-      <Filter>src\UI</Filter>
+      <Filter>src\ui</Filter>
     </ClCompile>
     <ClCompile Include="IOManager.h">
-      <Filter>include\IO</Filter>
+      <Filter>include\io</Filter>
     </ClCompile>
     <ClCompile Include="TransmitterSensor.h">
-      <Filter>include\IO\Sensors</Filter>
+      <Filter>include\io\sensors</Filter>
     </ClCompile>
     <ClCompile Include="BaseComponent.h">
-      <Filter>include\UI\Components</Filter>
+      <Filter>include\ui\components</Filter>
     </ClCompile>
     <ClCompile Include="UIManager.h">
-      <Filter>include\UI</Filter>
+      <Filter>include\ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
