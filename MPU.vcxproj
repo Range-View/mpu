@@ -127,7 +127,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Analysis_Manager.cpp" />
+    <ClCompile Include="IOManager.h" />
+    <ClCompile Include="IO_Manager.cpp" />
     <ClCompile Include="MPU.cpp" />
+    <ClCompile Include="TransmitterSensor.h" />
+    <ClCompile Include="BaseComponent.h" />
+    <ClCompile Include="UIManager.h" />
+    <ClCompile Include="UI_Manager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="temp.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="configManager.h" />
+    <ClInclude Include="errorCodes.h" />
+    <ClInclude Include="logger.h" />
+    <ClInclude Include="SensorTypes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
