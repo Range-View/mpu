@@ -31,8 +31,15 @@
 *.out
 *.app
 /.vs
+
+# Binary Directories
 /MPU/x64/Debug
+/MPU/x32/Debug
 /x64/Debug
+/x32/Debug
 /Analysis/x64/Debug
+/Analysis/x32/Debug
 /IO/x64/Debug
+/IO/x32/Debug
 /UI/x64/Debug
+/UI/x32/Debug
