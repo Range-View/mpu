@@ -1,8 +1,8 @@
 #pragma once
 
-#include "BaseComponent.h"
 #include <vector>
 #include <memory>
+#include "components/BaseComponent.h"
 
 class UIManager {
 private:

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "SensorTypes.h"
 #include <string>
 #include <functional>
 #include <unordered_map>
 #include <memory>
 #include <stdexcept>
+#include "../enums/SensorTypes.h"
 
 class ISensor;
 
@@ -43,28 +43,12 @@ private:
     std::unordered_map<SensorTypes, ISensor*> sensors;
 
 public:
-    virtual ~IOManager() override {
-        // Proper cleanup if necessary
-    }
+    virtual ~IOManager();
 
-    void registerSensor(SensorTypes sensorType, ISensor* sensor) override {
-        sensors[sensorType] = sensor;
-    }
+    void registerSensor(SensorTypes sensorType, ISensor* sensor);
 
-    std::string readSensorData(SensorTypes sensorType) override {
-        if (sensors.find(sensorType) != sensors.end()) {
-            return sensors[sensorType]->readData();
-        }
-        throw std::runtime_error("Sensor not found.");
-    }
+    std::string readSensorData(SensorTypes sensorType);
 
-    void writeSensorData(SensorTypes sensorType, const std::string& data) override {
-        if (sensors.find(sensorType) != sensors.end()) {
-            sensors[sensorType]->writeData(data);
-        }
-        else {
-            throw std::runtime_error("Sensor not found.");
-        }
-    }
+    void writeSensorData(SensorTypes sensorType, const std::string& data);
 };
 
