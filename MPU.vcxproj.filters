@@ -51,48 +51,48 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MPU.cpp">
-      <Filter>src\mpu</Filter>
+    <ClCompile Include="src\mpu\MPU.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="IO_Manager.cpp">
-      <Filter>src\io</Filter>
-    </ClCompile>
-    <ClCompile Include="Analysis_Manager.cpp">
-      <Filter>src\analysis</Filter>
-    </ClCompile>
-    <ClCompile Include="UI_Manager.cpp">
-      <Filter>src\ui</Filter>
-    </ClCompile>
-    <ClCompile Include="IOManager.h">
-      <Filter>include\io</Filter>
-    </ClCompile>
-    <ClCompile Include="TransmitterSensor.h">
-      <Filter>include\io\sensors</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseComponent.h">
+    <ClCompile Include="include\ui\Components\BaseComponent.h">
       <Filter>include\ui\components</Filter>
     </ClCompile>
-    <ClCompile Include="UIManager.h">
+    <ClCompile Include="include\io\IOManager.h">
+      <Filter>include\io</Filter>
+    </ClCompile>
+    <ClCompile Include="include\io\Sensors\TransmitterSensor.h">
+      <Filter>include\io\sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ui\UIManager.h">
       <Filter>include\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\analysis\Analysis_Manager.cpp">
+      <Filter>src\analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\IO_Manager.cpp">
+      <Filter>src\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\UI_Manager.cpp">
+      <Filter>src\ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="temp.json">
-      <Filter>resources</Filter>
-    </None>
+    <ClInclude Include="include\util\configManager.h">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\enums\errorCodes.h">
+      <Filter>include\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="include\util\logger.h">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\enums\SensorTypes.h">
+      <Filter>include\enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="errorCodes.h">
-      <Filter>include\enums</Filter>
-    </ClInclude>
-    <ClInclude Include="SensorTypes.h">
-      <Filter>include\enums</Filter>
-    </ClInclude>
-    <ClInclude Include="logger.h">
-      <Filter>include\util</Filter>
-    </ClInclude>
-    <ClInclude Include="configManager.h">
-      <Filter>include\util</Filter>
-    </ClInclude>
+    <None Include="resources\temp.json">
+      <Filter>resources</Filter>
+    </None>
   </ItemGroup>
 </Project>
