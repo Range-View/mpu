@@ -89,6 +89,9 @@
     <ClInclude Include="include\enums\SensorTypes.h">
       <Filter>include\enums</Filter>
     </ClInclude>
+    <ClInclude Include="Sensor.h">
+      <Filter>include\io\sensors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\temp.json">
