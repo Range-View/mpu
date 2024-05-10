@@ -49,6 +49,9 @@
     <Filter Include="include\ui\components">
       <UniqueIdentifier>{1fe35df2-e2a5-4139-a5f4-f83c6ef965ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\root">
+      <UniqueIdentifier>{7d27ea10-42ca-4991-b6fd-06055d1b85bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\mpu\MPU.cpp">
@@ -88,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="include\enums\SensorTypes.h">
       <Filter>include\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ApplicationManager.h">
+      <Filter>include\root</Filter>
     </ClInclude>
     <ClInclude Include="Sensor.h">
       <Filter>include\io\sensors</Filter>

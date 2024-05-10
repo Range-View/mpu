@@ -130,8 +130,8 @@
     <ClCompile Include="src\analysis\Analysis_Manager.cpp" />
     <ClCompile Include="include\io\IOManager.h" />
     <ClCompile Include="src\io\IO_Manager.cpp" />
+    <ClCompile Include="src\mpu\ApplicationManager.cpp" />
     <ClCompile Include="src\mpu\MPU.cpp" />
-    <ClCompile Include="include\io\Sensors\TransmitterSensor.h" />
     <ClCompile Include="include\ui\Components\BaseComponent.h" />
     <ClCompile Include="include\ui\UIManager.h" />
     <ClCompile Include="src\ui\UI_Manager.cpp" />
@@ -140,11 +140,15 @@
     <None Include="resources\temp.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\enums\AxisDirection.h" />
+    <ClInclude Include="include\io\Sensors\range\DepthMatrix.h" />
+    <ClInclude Include="include\io\Sensors\range\RangeSensor.h" />
+    <ClInclude Include="include\root\ApplicationManager.h" />
     <ClInclude Include="include\util\configManager.h" />
     <ClInclude Include="include\enums\errorCodes.h" />
     <ClInclude Include="include\util\logger.h" />
     <ClInclude Include="include\enums\SensorTypes.h" />
-    <ClInclude Include="Sensor.h" />
+    <ClInclude Include="include\io\Sensors\Sensor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

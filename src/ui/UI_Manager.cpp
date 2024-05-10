@@ -9,25 +9,24 @@ UIManager::~UIManager() {
 }
 
 void UIManager::initialize() {
-    // Initialize UI components
-    // For example, load resources or create window instances
+    // Initialize UI components and create window instances
 }
 
 void UIManager::run() {
     // Main loop to handle UI updates and events
-    while (true) { // Replace with a proper condition to exit the loop
+    bool shouldRender = true;
+    while (shouldRender) { //replace later with actual running condition
         for (auto& component : components) {
             component->update();
             component->render();
         }
-        // Handle events (mouse, keyboard, etc.)
+        // Handle events
 
-        // Redraw UI if necessary
+        // Redraw UI
     }
 }
 
 void UIManager::shutdown() {
-    // Clean up resources and shut down UI components
     components.clear();
 }
 
@@ -40,4 +39,3 @@ void UIManager::removeComponent(BaseComponent* component) {
         [component](const std::unique_ptr<BaseComponent>& c) { return c.get() == component; }),
         components.end());
 }
-

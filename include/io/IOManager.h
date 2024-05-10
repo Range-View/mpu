@@ -6,12 +6,21 @@
 #include <memory>
 #include <stdexcept>
 #include "../enums/SensorTypes.h"
-#include "../../Sensor.h"
+#include "../io/Sensors/Sensor.h"
 
 
 class IIOManager {
 public:
     virtual ~IIOManager() = default;
+
+    // Initializes all IO comm channels
+    virtual void initialize();
+
+    // Kills all IO comm channels
+    virtual void shutdown();
+
+    // Updates all sensor inputs
+    virtual void processInputs();
 
     // Register a sensor with the IO manager
     virtual void registerSensor(SensorTypes sensorType, ISensor* sensor) = 0;
@@ -26,12 +35,18 @@ public:
 
 
 
-class IOManager : public IIOManager {
+class IOManager {
 private:
     std::unordered_map<SensorTypes, ISensor*> sensors;
 
 public:
     virtual ~IOManager();
+
+    void initialize();
+
+    void shutdown();
+
+    void processInputs();
 
     void registerSensor(SensorTypes sensorType, ISensor* sensor);
 

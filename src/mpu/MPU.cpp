@@ -1,8 +1,10 @@
 
-#include <iostream>
+#include "../../include/root/ApplicationManager.h"
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main(){
+
+    ApplicationManager appManager;
+
+    return 0;
 }
 
