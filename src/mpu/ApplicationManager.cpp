@@ -18,7 +18,7 @@ void ApplicationManager::initialize() {
 }
 
 // Main loop
-void ApplicationManager::run(){ 
+void ApplicationManager::run() {
     bool shouldRender = true; //replace later with actual stoping condition
     while (shouldRender) {
         ioManager.processInputs();
