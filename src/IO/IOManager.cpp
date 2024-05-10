@@ -8,7 +8,7 @@ IOManager::~IOManager() {
 }
 
 
-void IOManager::initialize(){
+void IOManager::initialize() {
 
     //registring the range sensor 
     registerSensor(SensorTypes::Range, new RangeSensor());
@@ -37,7 +37,7 @@ void IOManager::shutdown() {
 // Registers a sensor with the IO manager
 void IOManager::registerSensor(SensorTypes sensorType, ISensor* sensor) {
     if (sensors.find(sensorType) != sensors.end()) { // if sensor is already registered
-        throw std::runtime_error("Sensor type already registered."); 
+        throw std::runtime_error("Sensor type already registered.");
         return;
     }
     sensors[sensorType] = sensor;
