@@ -9,11 +9,12 @@ private:
 
 public:
     RangeSensor() : depthData(getIninitialMatrixSize(AxisDirection::Vertical), getIninitialMatrixSize(AxisDirection::Horizontal)) {
-        depthData.populateWithDummyData();
+        depthData.populateWithDummyData(true);
     }
 
     std::string readData() override {
-        return depthData.toString();  // for debugging
+        //return depthData.toString();  // for debugging
+        return depthData.toClusterString();  // for debugging
     }
 
     void writeData(const std::string& data) override {
@@ -25,9 +26,9 @@ private:
     size_t getIninitialMatrixSize(AxisDirection direction) {
         switch (direction) {
         case AxisDirection::Horizontal:
-            return 10;
+            return 60;
         case AxisDirection::Vertical:
-            return 10;
+            return 40;
         default:
             return 600;
         }
