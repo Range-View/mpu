@@ -25,9 +25,9 @@ private:
     size_t getIninitialMatrixSize(AxisDirection direction) {
         switch (direction) {
         case AxisDirection::Horizontal:
-            return 600;
+            return 10;
         case AxisDirection::Vertical:
-            return 300;
+            return 10;
         default:
             return 600;
         }

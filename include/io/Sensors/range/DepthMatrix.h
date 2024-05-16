@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib> 
 #include <ctime>   
+#include <cmath>
 
 class DepthMatrix {
 private:
@@ -30,16 +31,24 @@ public:
     }
 
 
+    // Populate the matrix with a ball shape in the center
     void populateWithDummyData() {
-        srand(time(NULL)); // random number
-        for (size_t i = 0; i < rows; ++i) {
-            for (size_t j = 0; j < cols; ++j) {
-                float dummyValue = static_cast<float>(rand() % 100);
-                setValue(i, j, dummyValue);
+        size_t centerX = cols / 2;
+        size_t centerY = rows / 2;
+        float radius = std::min(rows, cols) / 4.0;
+
+        for (size_t y = 0; y < rows; ++y) {
+            for (size_t x = 0; x < cols; ++x) {
+                float distance = std::sqrt(std::pow(x - centerX, 2) + std::pow(y - centerY, 2));
+                if (distance <= radius) {
+                    setValue(y, x, 1); // Inside the ball
+                }
+                else {
+                    setValue(y, x, 0); // Outside the ball
+                }
             }
         }
     }
-
     // Convert the matrix to string (for debugging)
     std::string toString() const {
         std::string data;
