@@ -1,21 +1,43 @@
-﻿# CMakeList.txt : CMake project for MPU, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required(VERSION 3.8)
 
-# Enable Hot Reload for MSVC compilers if supported.
-if (POLICY CMP0141)
-  cmake_policy(SET CMP0141 NEW)
-  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
-endif()
-
-project ("MPU")
+project(MPU)
 
 # Add source to this project's executable.
-add_executable (MPU "MPU.cpp" "MPU.h" "include/enums/ErrorCodes.h" "include/enums/SensorTypes.h" "include/io/IOManager.h" "include/io/sensors/Sensor.h" "include/io/sensors/range/DepthMatrix.h" "include/io/sensors/range/RangeSensor.h" "include/root/ApplicationManager.h" "include/ui/UIManager.h" "include/ui/components/BaseComponent.h" "include/util/configManager.h" "include/util/logger.h" "src/analysis/Analysis_Manager.cpp" "src/io/IOManager.cpp" "src/MPU/ApplicationManager.cpp" "src/UI/UI_Manager.cpp")
+add_executable(MPU
+  "MPU.cpp"
+  "MPU.h"
+  "include/enums/ErrorCodes.h"
+  "include/enums/SensorTypes.h"
+  "include/io/IOManager.h"
+  "include/io/sensors/Sensor.h"
+  "include/io/sensors/range/DepthMatrix.h"
+  "include/io/sensors/range/RangeSensor.h"
+  "include/root/ApplicationManager.h"
+  "include/ui/UIManager.h"
+  "include/ui/components/BaseComponent.h"
+  "include/util/configManager.h"
+  "include/util/logger.h"
+  "src/analysis/Analysis_Manager.cpp"
+  "src/io/IOManager.cpp"
+  "src/MPU/ApplicationManager.cpp"
+  "src/UI/UI_Manager.cpp"
+)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET MPU PROPERTY CXX_STANDARD 20)
 endif()
 
-# TODO: Add tests and install targets if needed.
+
+include_directories(libs)
+
+# Add LVGL sources
+file(GLOB LVGL_SOURCES "libs/LVGL/src/*.c" "libs/LVGL/src/widgets/*.c" "libs/LVGL/src/core/*.c")
+
+# Add LVGL drivers sources
+file(GLOB LVGL_DRIVERS_SOURCES "libs/lv_drivers/display/*.c" "libs/lv_drivers/indev/*.c")
+
+add_library(lvgl STATIC ${LVGL_SOURCES})
+add_library(lvgl_drivers STATIC ${LVGL_DRIVERS_SOURCES})
+
+# Link LVGL libraries
+target_link_libraries(MPU lvgl lvgl_drivers)

@@ -4,7 +4,6 @@
 #include "../IO/IOManager.h"
 //#include "include/analysis/AnalysisManager.h"
 
-
 class ApplicationManager {
 public:
     ApplicationManager();

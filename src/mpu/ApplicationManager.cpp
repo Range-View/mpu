@@ -19,10 +19,10 @@ void ApplicationManager::initialize() {
 
 // Main loop
 void ApplicationManager::run() {
-    bool shouldRender = true; //replace later with actual stoping condition
+    bool shouldRender = true; // Replace later with actual stopping condition
     while (shouldRender) {
         ioManager.processInputs();
-        //uiManager.update();
+        uiManager.run();
         //analysisManager.analyzeData();
     }
 }
