@@ -46,3 +46,17 @@
 /out/build/x64-debug
 /MPU/obj/Debug/net8.0
 /MPU/obj
+/Analysis/obj
+/Entities/obj
+/Managers/obj
+/UI/obj
+/Managers/bin/Debug/net8.0
+/MPU/bin/Debug/net8.0/Analysis.pdb
+/MPU/bin/Debug/net8.0/Entities.pdb
+/MPU/bin/Debug/net8.0/Managers.pdb
+/MPU/bin/Debug/net8.0/MPU.deps.json
+/MPU/bin/Debug/net8.0/MPU.pdb
+*.pdb
+*.json
+/MPU/bin/Debug/net8.0/MPU.deps.json
+/MPU/bin/Debug/net8.0/MPU.pdb
