@@ -1,43 +1,61 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Managers.Services
 {
-    public class IOService
+    public static class IOService
     {
-        private const string DllName = "YourCppLibrary.dll";
+        private const string WindowsLibrary = "IO_Manager.dll";
+        private const string LinuxLibrary = "IO_Manager.so";
 
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void initialize();
-
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void shutdown();
-
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr readSensorData(int sensorType);
-
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void writeSensorData(int sensorType, string data);
-
-
-        public void Initialize()
+        static IOService()
         {
-            initialize();
+            var libraryPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                NativeLibrary.Load(System.IO.Path.Combine(libraryPath, WindowsLibrary));
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                NativeLibrary.Load(System.IO.Path.Combine(libraryPath, LinuxLibrary));
+            }
         }
 
-        public void Shutdown()
+
+
+        [DllImport(WindowsLibrary, EntryPoint = "initialize", CallingConvention = CallingConvention.Cdecl)]
+        //[DllImport(LinuxLibrary, EntryPoint = "initialize", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void Initialize();
+
+
+
+        [DllImport(WindowsLibrary, EntryPoint = "shutdown", CallingConvention = CallingConvention.Cdecl)]
+        ////[DllImport(LinuxLibrary, EntryPoint = "shutdown", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void Shutdown();
+
+
+
+        [DllImport(WindowsLibrary, EntryPoint = "readSensorData", CallingConvention = CallingConvention.Cdecl)]
+        ////[DllImport(LinuxLibrary, EntryPoint = "readSensorData", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr ReadSensorDataInternal(int sensorType);
+
+
+        public static string ReadSensorData(int sensorType)
         {
-            shutdown();
+            IntPtr dataPtr = ReadSensorDataInternal(sensorType);
+            if (dataPtr == IntPtr.Zero)
+            {
+                throw new Exception("Failed to read sensor data");
+            }
+            return Marshal.PtrToStringAnsi(dataPtr);
         }
 
-        public string ReadSensorData(int sensorType)
-        {
-            IntPtr ptr = readSensorData(sensorType);
-            return Marshal.PtrToStringAnsi(ptr);
-        }
 
-        public void WriteSensorData(int sensorType, string data)
-        {
-            writeSensorData(sensorType, data);
-        }
+
+
+
+        [DllImport(WindowsLibrary, EntryPoint = "writeSensorData", CallingConvention = CallingConvention.Cdecl)]
+        ////[DllImport(LinuxLibrary, EntryPoint = "writeSensorData", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void WriteSensorData(int sensorType, string data);
     }
 }

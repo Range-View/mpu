@@ -5,13 +5,18 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPU", "MPU\MPU.csproj", "{D4E7B16C-C255-4FAD-811D-0A5D0DC1DFB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analysis", "Analysis\Analysis.csproj", "{009D30C0-2ED5-41CF-B1B6-C3840A90ADC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analysis", "Analysis\Analysis.csproj", "{009D30C0-2ED5-41CF-B1B6-C3840A90ADC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{6BE72375-C0A4-4FAC-AB03-45EB1F60D283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{6BE72375-C0A4-4FAC-AB03-45EB1F60D283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{CCDABA04-D3EB-40A1-9E55-1DB93F9D0EAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{CCDABA04-D3EB-40A1-9E55-1DB93F9D0EAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Managers", "Managers\Managers.csproj", "{DC3D23EB-BC15-42F9-96D8-7241209DF04A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Managers", "Managers\Managers.csproj", "{DC3D23EB-BC15-42F9-96D8-7241209DF04A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{9BE51B95-772A-4DF6-9596-B47B5C7B4111}"
+	ProjectSection(SolutionItems) = preProject
+		lib\IO_Manager.dll = lib\IO_Manager.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

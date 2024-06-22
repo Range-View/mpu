@@ -1,4 +1,7 @@
-﻿namespace Managers
+﻿using Managers.Services;
+using System.Runtime.InteropServices;
+
+namespace Managers
 {
     public class ApplicationManager
     {
@@ -6,13 +9,13 @@
 
         public ApplicationManager()
         {
-            uiManager = new UIManager();
-
             Initialize();
         }
 
         private void Initialize()
         {
+            IOService.Initialize();
+            uiManager = new UIManager();
             //uiManager.Initialize();
         }
 
@@ -21,6 +24,9 @@
             bool shouldRender = true; // Replace later with actual stopping condition
             while (shouldRender)
             {
+                string sensorData = IOService.ReadSensorData(0);
+                Console.WriteLine($"Sensor Data: {sensorData}");
+
                 uiManager.Update();
                 Thread.Sleep(33); //30 FPS
             }
