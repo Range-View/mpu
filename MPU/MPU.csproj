@@ -8,14 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Bootstrap\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Analysis\Analysis.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
     <ProjectReference Include="..\Managers\Managers.csproj" />
     <ProjectReference Include="..\UI\UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Bootstrap\" />
   </ItemGroup>
 
 </Project>

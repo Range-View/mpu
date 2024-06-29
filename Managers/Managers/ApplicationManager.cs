@@ -1,5 +1,8 @@
-﻿using Managers.Services;
-using System.Runtime.InteropServices;
+﻿using System.Threading;
+using Avalonia;
+using Avalonia.ReactiveUI;
+using UI;
+using Managers.Services;
 
 namespace Managers
 {
@@ -7,16 +10,17 @@ namespace Managers
     {
         private UIManager uiManager;
 
-        public ApplicationManager()
+        public ApplicationManager(string[] appArgs)
         {
-            Initialize();
+            Initialize(appArgs);
         }
 
-        private void Initialize()
+        private void Initialize(string[] appArgs)
         {
             IOService.Initialize();
+
             uiManager = new UIManager();
-            //uiManager.Initialize();
+            uiManager.Initialize(appArgs);
         }
 
         public void Run()

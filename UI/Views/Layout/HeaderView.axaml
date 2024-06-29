@@ -1,0 +1,13 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:UI.ViewModels.Layout"
+             x:Class="UI.Views.Layout.HeaderView">
+
+	<UserControl.DataContext>
+		<vm:HeaderViewModel />
+	</UserControl.DataContext>
+
+	<Border Background="#B763DF" Padding="10">
+		<TextBlock Foreground="#1E1E1E" Text="{Binding HeaderText}" HorizontalAlignment="Center" FontSize="50" FontWeight="ExtraLight"/>
+	</Border>
+</UserControl>
