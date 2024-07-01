@@ -9,6 +9,7 @@ using Managers.Services;
 using Entities.Enums;
 using Entities.Range;
 using Entities.Util;
+using Analysis.Services;
 
 namespace MPU.Bootstrap
 {
@@ -18,7 +19,8 @@ namespace MPU.Bootstrap
         {
             var services = new ServiceCollection()
                 .AddSingleton<CurrentFrame>()
-                .AddSingleton<UIManager>();
+                .AddSingleton<UIManager>()
+                .AddSingleton<AnalysisService>();
 
             var serviceProvider = services.BuildServiceProvider();
             ServiceLocator.Initialize(serviceProvider);
@@ -46,11 +48,14 @@ namespace MPU.Bootstrap
 
         private static void MainLoop(UIManager uiManager, CurrentFrame currentFrame)
         {
+            var analysisService = ServiceLocator.Instance.GetRequiredService<AnalysisService>();
+
             bool shouldRender = true;
             while (shouldRender)
             {
                 RangeData rangeData = IOService.ReadSensorBinary(SensorTypes.Range);
                 currentFrame.Range = rangeData;
+                currentFrame.Insights = analysisService.AnalyzeRangeData(rangeData);
                 uiManager.Update();
                 Thread.Sleep(33); //~30 FPS
             }

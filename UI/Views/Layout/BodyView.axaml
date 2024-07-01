@@ -2,7 +2,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="UI.Views.Layout.BodyView">
     <StackPanel>
-        <TextBlock Background="Red" Foreground="White" Text="{Binding Rows, StringFormat='Rows: {0}'}" />
-        <TextBlock Background="Blue" Foreground="White" Text="{Binding Cols, StringFormat='Cols: {0}'}" />
-    </StackPanel>
+		<TextBlock Background="Red" Foreground="White" Text="{Binding Rows, StringFormat='Rows: {0}'}" />
+		<TextBlock Background="Blue" Foreground="White" Text="{Binding Cols, StringFormat='Cols: {0}'}" />
+		<TextBlock Background="Green" Foreground="White" Text="{Binding MaxValue, StringFormat='Max Value: {0}'}" />
+		<TextBlock Background="Yellow" Foreground="Black" Text="{Binding MinValue, StringFormat='Min Value: {0}'}" />
+
+
+		<!--<ListBox ItemsSource="{Binding PeakPositions}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding StringFormat='Peak Position: ({0}, {1})'}" />
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>-->
+	
+	
+	</StackPanel>
 </UserControl>
