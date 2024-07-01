@@ -1,14 +1,25 @@
 using Avalonia.Controls;
-using Avalonia.Interactivity;
-using System;
-using System.Diagnostics;
+using Entities.Frame;
+using UI.ViewModels;
+using UI.Views.Layout;
 
-namespace UI.Views;
-
-public partial class MainWindow : Window
+namespace UI.Views
 {
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        public MainWindow(CurrentFrame currentFrame)
+        {
+            InitializeComponent();
+            DataContext = new MainWindowViewModel(currentFrame);
+
+            var bodyView = new BodyView(currentFrame);
+            this.FindControl<Grid>("MainGrid").Children.Add(bodyView);
+            Grid.SetRow(bodyView, 1);
+        }
     }
 }

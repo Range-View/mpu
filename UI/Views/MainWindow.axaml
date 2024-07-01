@@ -14,7 +14,7 @@
 		<vm:MainWindowViewModel />
 	</Design.DataContext>
 
-	<Grid>
+	<Grid x:Name="MainGrid">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
@@ -23,9 +23,6 @@
 
 		<!-- Header -->
 		<local:HeaderView Grid.Row="0" />
-
-		<!-- Body -->
-		<local:BodyView Grid.Row="1" />
 
 		<!-- Footer -->
 		<local:FooterView Grid.Row="2" />

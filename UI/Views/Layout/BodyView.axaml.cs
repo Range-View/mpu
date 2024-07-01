@@ -1,9 +1,6 @@
 ﻿using Avalonia.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Entities.Frame;
+using UI.ViewModels.Layout;
 
 namespace UI.Views.Layout
 {
@@ -12,6 +9,12 @@ namespace UI.Views.Layout
         public BodyView()
         {
             InitializeComponent();
+        }
+
+        public BodyView(CurrentFrame currentFrame)
+        {
+            InitializeComponent();
+            DataContext = new BodyViewModel(currentFrame);
         }
     }
 }

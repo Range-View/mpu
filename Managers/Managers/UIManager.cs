@@ -1,15 +1,7 @@
-﻿using Avalonia;
-using Avalonia.ReactiveUI;
-using UI;
-
-namespace Managers
+﻿namespace Managers
 {
     public class UIManager
     {
-        public void Initialize(string[] appArgs)
-        {
-            BuildAvaloniaApp().StartWithClassicDesktopLifetime(appArgs);
-        }
 
         public void Update()
         {
@@ -21,10 +13,6 @@ namespace Managers
             // Shutdown logic
         }
 
-        public static AppBuilder BuildAvaloniaApp()
-            => AppBuilder.Configure<App>()
-                         .UsePlatformDetect()
-                         .LogToTrace()
-                         .UseReactiveUI();
+      
     }
 }
