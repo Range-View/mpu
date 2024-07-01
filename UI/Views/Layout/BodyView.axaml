@@ -1,7 +1,8 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:UI.Views.Components.Chart"
              x:Class="UI.Views.Layout.BodyView">
-    <StackPanel>
+	<StackPanel Background="White">
 		<TextBlock Background="Red" Foreground="White" Text="{Binding Rows, StringFormat='Rows: {0}'}" />
 		<TextBlock Background="Blue" Foreground="White" Text="{Binding Cols, StringFormat='Cols: {0}'}" />
 		<TextBlock Background="Green" Foreground="White" Text="{Binding MaxValue, StringFormat='Max Value: {0}'}" />
@@ -11,11 +12,13 @@
 		<!--<ListBox ItemsSource="{Binding PeakPositions}">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<TextBlock Text="{Binding StringFormat='Peak Position: ({0}, {1})'}" />
+					<TextBlock Text="{Binding ., StringFormat='Peak Position: ({0})'}" />
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>-->
-	
-	
+
+
+
+		<local:PeakChartView DataContext="{Binding PeakChartViewModel}" />
 	</StackPanel>
 </UserControl>

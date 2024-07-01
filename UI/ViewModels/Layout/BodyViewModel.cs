@@ -1,8 +1,8 @@
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+using DynamicData;
 using Entities.Frame;
 using ReactiveUI;
+using System.Collections.ObjectModel;
+using UI.ViewModels.Components.Chart;
 
 namespace UI.ViewModels.Layout
 {
@@ -10,6 +10,8 @@ namespace UI.ViewModels.Layout
     {
         private CurrentFrame currentFrame;
         private ObservableCollection<Tuple<int, int>> peakPositions;
+
+        public PeakChartViewModel PeakChartViewModel { get; private set; }
 
         public CurrentFrame CurrentFrame
         {
@@ -23,18 +25,22 @@ namespace UI.ViewModels.Layout
                 this.RaisePropertyChanged(nameof(MaxValue));
                 this.RaisePropertyChanged(nameof(MinValue));
                 this.RaisePropertyChanged(nameof(PeakPositions));
+                UpdatePeakPositions();
             }
         }
 
         public BodyViewModel()
         {
             PeakPositions = new ObservableCollection<Tuple<int, int>>();
+            PeakChartViewModel = new PeakChartViewModel();
         }
 
         public BodyViewModel(CurrentFrame currentFrame)
         {
             CurrentFrame = currentFrame;
             PeakPositions = new ObservableCollection<Tuple<int, int>>();
+            PeakChartViewModel = new PeakChartViewModel();
+            UpdatePeakPositions();
         }
 
         public int Rows => CurrentFrame?.Range?.Rows ?? 0;
@@ -48,7 +54,19 @@ namespace UI.ViewModels.Layout
             {
                 peakPositions = value;
                 this.RaisePropertyChanged(nameof(PeakPositions));
+                PeakChartViewModel?.UpdateSeries(PeakPositions); 
             }
+        }
+
+        private void UpdatePeakPositions()
+        {
+            if (PeakPositions is null) return;
+            PeakPositions.Clear();
+            foreach (var peak in CurrentFrame?.Insights?.PeakPositions)
+            {
+                PeakPositions.Add(new Tuple<int, int>(peak.Row, peak.Col));
+            }
+            PeakChartViewModel?.UpdateSeries(PeakPositions); 
         }
     }
 }

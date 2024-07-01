@@ -13,6 +13,9 @@
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.11" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.11" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.11" />
+	<PackageReference Include="LiveChartsCore" Version="2.0.0-rc2" />
+	<PackageReference Include="LiveChartsCore.SkiaSharpView" Version="2.0.0-rc2" />
+	<PackageReference Include="LiveChartsCore.SkiaSharpView.Avalonia" Version="2.0.0-rc2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
