@@ -9,7 +9,6 @@ namespace UI.ViewModels.Layout
     public class BodyViewModel : ViewModelBase
     {
         private CurrentFrame currentFrame;
-        private ObservableCollection<Tuple<int, int>> peakPositions;
 
         public PeakChartViewModel PeakChartViewModel { get; private set; }
 
@@ -24,49 +23,34 @@ namespace UI.ViewModels.Layout
                 this.RaisePropertyChanged(nameof(Cols));
                 this.RaisePropertyChanged(nameof(MaxValue));
                 this.RaisePropertyChanged(nameof(MinValue));
-                this.RaisePropertyChanged(nameof(PeakPositions));
-                UpdatePeakPositions();
+                UpdateDetectedObjects();
             }
         }
 
         public BodyViewModel()
         {
-            PeakPositions = new ObservableCollection<Tuple<int, int>>();
             PeakChartViewModel = new PeakChartViewModel();
         }
 
         public BodyViewModel(CurrentFrame currentFrame)
         {
             CurrentFrame = currentFrame;
-            PeakPositions = new ObservableCollection<Tuple<int, int>>();
             PeakChartViewModel = new PeakChartViewModel();
-            UpdatePeakPositions();
+            UpdateDetectedObjects();
         }
 
         public int Rows => CurrentFrame?.Range?.Rows ?? 0;
         public int Cols => CurrentFrame?.Range?.Cols ?? 0;
         public float MaxValue => CurrentFrame?.Range?.DepthMatrix.Cast<float>().Max() ?? 0;
         public float MinValue => CurrentFrame?.Range?.DepthMatrix.Cast<float>().Min() ?? 0;
-        public ObservableCollection<Tuple<int, int>> PeakPositions
-        {
-            get => peakPositions;
-            set
-            {
-                peakPositions = value;
-                this.RaisePropertyChanged(nameof(PeakPositions));
-                PeakChartViewModel?.UpdateSeries(PeakPositions); 
-            }
-        }
 
-        private void UpdatePeakPositions()
+        public void UpdateDetectedObjects()
         {
-            if (PeakPositions is null) return;
-            PeakPositions.Clear();
-            foreach (var peak in CurrentFrame?.Insights?.PeakPositions)
+            if (PeakChartViewModel != null)
             {
-                PeakPositions.Add(new Tuple<int, int>(peak.Row, peak.Col));
+                PeakChartViewModel.UpdateSeries(CurrentFrame);
             }
-            PeakChartViewModel?.UpdateSeries(PeakPositions); 
+
         }
     }
 }

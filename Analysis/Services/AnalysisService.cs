@@ -1,4 +1,5 @@
-﻿using Entities.Frame;
+﻿using Analysis.Algorithms;
+using Entities.Frame;
 using Entities.Range;
 
 namespace Analysis.Services
@@ -7,39 +8,41 @@ namespace Analysis.Services
     {
         public FrameInsights AnalyzeRangeData(RangeData rangeData)
         {
-            var insights = new FrameInsights();
+            FrameInsights insights = new();
 
             float maxValue = float.MinValue;
             float minValue = float.MaxValue;
-            var peakPositions = new List<(int, int)>();
+            List<ObjectInsight> detectedObjects = new();
 
+            bool[,] visited = new bool[rangeData.Rows, rangeData.Cols];
             for (int i = 0; i < rangeData.Rows; i++)
             {
                 for (int j = 0; j < rangeData.Cols; j++)
                 {
-                    float value = rangeData.DepthMatrix[i, j];
-                    if (value > maxValue)
+                    if (!visited[i, j] && rangeData.DepthMatrix[i, j] > 0)
                     {
-                        maxValue = value;
-                        peakPositions.Clear();
-                        peakPositions.Add((i, j));
-                    }
-                    else if (value == maxValue)
-                    {
-                        peakPositions.Add((i, j));
-                    }
-
-                    if (value < minValue)
-                    {
-                        minValue = value;
+                        ObjectInsight obj = ObjectDetection.DetectObject(rangeData, visited, i, j);
+                        detectedObjects.Add(obj);
                     }
                 }
             }
 
+            foreach (ObjectInsight obj in detectedObjects)
+            {
+                if (obj.AverageDistance > maxValue)
+                {
+                    maxValue = obj.AverageDistance;
+                }
+                if (obj.AverageDistance < minValue)
+                {
+                    minValue = obj.AverageDistance;
+                }
+
+            }
+
             insights.MaxValue = maxValue;
             insights.MinValue = minValue;
-            insights.PeakPositions = peakPositions;
-
+            insights.DetectedObjects = detectedObjects;
 
             return insights;
         }

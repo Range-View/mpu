@@ -7,6 +7,6 @@
 		<local:PeakChartViewModel />
 	</UserControl.DataContext>
 	<StackPanel>
-		<lvc:CartesianChart Series="{Binding Series}" Background="Orchid" Foreground="Brown" Width="900" Height="500"/>
+		<lvc:CartesianChart Series="{Binding Series}" YAxes="{Binding YAxes}" XAxes="{Binding XAxes}" Background="Orchid" Foreground="Brown" Width="600" Height="400"/>
 	</StackPanel>
 </UserControl>

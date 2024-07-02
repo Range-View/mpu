@@ -10,6 +10,8 @@ using Entities.Enums;
 using Entities.Range;
 using Entities.Util;
 using Analysis.Services;
+using LiveChartsCore;
+using LiveChartsCore.Kernel;
 
 namespace MPU.Bootstrap
 {
@@ -35,6 +37,9 @@ namespace MPU.Bootstrap
 
         public static async Task RunApplication(ServiceProvider serviceProvider, string[] args)
         {
+            Console.WriteLine("Configuring LiveCharts...");
+            ConfigureLiveCharts();
+
             var currentFrame = serviceProvider.GetService<CurrentFrame>();
             var uiManager = serviceProvider.GetService<UIManager>();
 
@@ -59,6 +64,16 @@ namespace MPU.Bootstrap
                 uiManager.Update();
                 Thread.Sleep(33); //~30 FPS
             }
+        }
+
+        private static void ConfigureLiveCharts()
+        {
+            LiveCharts.Configure(config =>
+            {
+                config.HasMap<LiveChartsCore.Kernel.Coordinate>((coord, _) =>
+                    new LiveChartsCore.Kernel.Coordinate(coord.PrimaryValue, coord.SecondaryValue));
+            });
+
         }
     }
 }

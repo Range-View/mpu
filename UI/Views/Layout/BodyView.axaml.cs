@@ -15,6 +15,12 @@ namespace UI.Views.Layout
         {
             InitializeComponent();
             DataContext = new BodyViewModel(currentFrame);
+
+            var viewModel = DataContext as BodyViewModel;
+            if (viewModel != null)
+            {
+                viewModel.UpdateDetectedObjects();
+            }
         }
     }
 }

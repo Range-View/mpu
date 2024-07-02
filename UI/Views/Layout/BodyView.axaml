@@ -9,15 +9,6 @@
 		<TextBlock Background="Yellow" Foreground="Black" Text="{Binding MinValue, StringFormat='Min Value: {0}'}" />
 
 
-		<!--<ListBox ItemsSource="{Binding PeakPositions}">
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<TextBlock Text="{Binding ., StringFormat='Peak Position: ({0})'}" />
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-		</ListBox>-->
-
-
 
 		<local:PeakChartView DataContext="{Binding PeakChartViewModel}" />
 	</StackPanel>
