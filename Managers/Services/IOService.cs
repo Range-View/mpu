@@ -8,26 +8,33 @@ namespace Managers.Services
 {
     public static class IOService
     {
-        #if WINDOWS
-            private const string LibraryName = "IO_Manager.dll";
-        #elif LINUX
-            private const string LibraryName = "libIO_Manager.so";
-        #else
-            private const string LibraryName = "IO_Manager"; 
-        #endif
+        private static readonly string LibraryName;
 
         static IOService()
         {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                LibraryName = "IO_Manager.dll";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                LibraryName = "libIO_Manager.so";
+            }
+            else
+            {
+                throw new PlatformNotSupportedException("Unsupported platform");
+            }
+
             NativeLibrary.Load(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, LibraryName));
         }
 
-        [DllImport(LibraryName, EntryPoint = "initialize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IO_Manager", EntryPoint = "initialize", CallingConvention = CallingConvention.Cdecl)]
         public static extern void Initialize();
 
-        [DllImport(LibraryName, EntryPoint = "shutdown", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IO_Manager", EntryPoint = "shutdown", CallingConvention = CallingConvention.Cdecl)]
         public static extern void Shutdown();
 
-        [DllImport(LibraryName, EntryPoint = "readSensorData", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IO_Manager", EntryPoint = "readSensorData", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr ReadSensorDataInternal(int sensorType);
 
         public static string ReadSensorData(SensorTypes sensorType)
@@ -40,7 +47,7 @@ namespace Managers.Services
             return Marshal.PtrToStringAnsi(dataPtr);
         }
 
-        [DllImport(LibraryName, EntryPoint = "readSensorBinaryData", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IO_Manager", EntryPoint = "readSensorBinaryData", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr ReadSensorBinaryDataInternal(int sensorType, out int size);
 
         public static RangeData ReadSensorBinary(SensorTypes sensorType)
@@ -75,7 +82,7 @@ namespace Managers.Services
             return rangeData;
         }
 
-        [DllImport(LibraryName, EntryPoint = "writeSensorData", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("IO_Manager", EntryPoint = "writeSensorData", CallingConvention = CallingConvention.Cdecl)]
         public static extern void WriteSensorData(int sensorType, string data);
     }
 }
