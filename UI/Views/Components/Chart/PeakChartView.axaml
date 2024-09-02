@@ -1,0 +1,12 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:UI.ViewModels.Components.Chart"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
+             x:Class="UI.Views.Components.Chart.PeakChartView">
+	<UserControl.DataContext>
+		<local:PeakChartViewModel />
+	</UserControl.DataContext>
+	<StackPanel>
+		<lvc:CartesianChart Series="{Binding Series}" YAxes="{Binding YAxes}" XAxes="{Binding XAxes}" Background="Orchid" Foreground="Brown" Width="600" Height="400"/>
+	</StackPanel>
+</UserControl>

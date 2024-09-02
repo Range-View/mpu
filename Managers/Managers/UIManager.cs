@@ -2,10 +2,6 @@
 {
     public class UIManager
     {
-        public void Initialize()
-        {
-            // Initialization logic
-        }
 
         public void Update()
         {
@@ -16,5 +12,7 @@
         {
             // Shutdown logic
         }
+
+      
     }
 }

@@ -4,6 +4,9 @@
 
 The MPU (Main Processing Unit) is designed to manage core processing tasks within a modular architecture. This project organizes various components such as third-party libraries, main application logic, I/O operations, user interface, and data analysis into a single multi-proj-solution - That would be integrated into the Physical MPU mounted on the Field Monitor.
 
+- **Build** - `dotnet build MPU.sln`
+- **Run** - `dotnet run --project MPU/MPU.csproj`
+
 # Directory Structure
 
 

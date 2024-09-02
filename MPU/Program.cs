@@ -1,13 +1,19 @@
-﻿using Managers;
+﻿using Avalonia;
+using MPU.Bootstrap;
+using System.Threading.Tasks;
 
 namespace MPU
 {
     class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        static async Task Main(string[] args)
         {
-            ApplicationManager appManager = new ApplicationManager();
-            appManager.Run();
+            var serviceProvider = AppInitializer.ConfigureServices();
+            await AppInitializer.RunApplication(serviceProvider, args);
         }
+
+        public static AppBuilder BuildAvaloniaApp()
+            => AppInitializer.BuildAvaloniaApp(AppInitializer.ConfigureServices());
     }
 }

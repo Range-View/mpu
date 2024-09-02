@@ -1,0 +1,13 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:UI.ViewModels.Layout"
+             x:Class="UI.Views.Layout.FooterView">
+
+	<UserControl.DataContext>
+		<vm:FooterViewModel />
+	</UserControl.DataContext>
+
+	<Border Background="#B763DF" Padding="10">
+		<TextBlock Foreground="#1E1E1E" Text="{Binding FooterText}" HorizontalAlignment="Center" FontSize="16"/>
+	</Border>
+</UserControl>
