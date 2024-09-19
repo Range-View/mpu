@@ -15,13 +15,15 @@ namespace Analysis.Services
             List<ObjectInsight> detectedObjects = new();
 
             bool[,] visited = new bool[rangeData.Rows, rangeData.Cols];
+            float depthThreshold = 0.3f;
+
             for (int i = 0; i < rangeData.Rows; i++)
             {
                 for (int j = 0; j < rangeData.Cols; j++)
                 {
-                    if (!visited[i, j] && rangeData.DepthMatrix[i, j] > 0)
+                    if (!visited[i, j] && rangeData.DepthMatrix[i, j] > depthThreshold)
                     {
-                        ObjectInsight obj = ObjectDetection.DetectObject(rangeData, visited, i, j);
+                        ObjectInsight obj = ObjectDetection.DetectObject(rangeData, visited, i, j, depthThreshold);
                         detectedObjects.Add(obj);
                     }
                 }
@@ -37,7 +39,6 @@ namespace Analysis.Services
                 {
                     minValue = obj.AverageDistance;
                 }
-
             }
 
             insights.MaxValue = maxValue;
@@ -46,5 +47,6 @@ namespace Analysis.Services
 
             return insights;
         }
+
     }
 }
