@@ -24,6 +24,8 @@
 		<!-- Header -->
 		<local:HeaderView Grid.Row="0" />
 
+		<local:BodyView Grid.Row="1" />
+
 		<!-- Footer -->
 		<local:FooterView Grid.Row="2" />
 	</Grid>

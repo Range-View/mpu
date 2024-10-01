@@ -7,7 +7,7 @@
 		<vm:HeaderViewModel />
 	</UserControl.DataContext>
 
-	<Border Background="#B763DF" Padding="10">
-		<TextBlock Foreground="#1E1E1E" Text="{Binding HeaderText}" HorizontalAlignment="Center" FontSize="50" FontWeight="ExtraLight"/>
+	<Border Background="{DynamicResource PrimaryColor}" Padding="10">
+		<TextBlock Foreground="{DynamicResource ForegroundBrush}" Text="{Binding HeaderText}" HorizontalAlignment="Center" FontSize="50" FontWeight="ExtraLight"/>
 	</Border>
 </UserControl>

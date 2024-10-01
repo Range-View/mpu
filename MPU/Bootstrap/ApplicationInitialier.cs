@@ -1,17 +1,15 @@
-﻿using Avalonia;
+﻿using Analysis.Services;
+using Avalonia;
 using Avalonia.ReactiveUI;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Threading.Tasks;
-using Entities.Frame;
-using Managers;
-using Managers.Services;
 using Entities.Enums;
+using Entities.Frame;
 using Entities.Range;
 using Entities.Util;
-using Analysis.Services;
 using LiveChartsCore;
-using LiveChartsCore.Kernel;
+using LiveChartsCore.SkiaSharpView;
+using Managers;
+using Managers.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MPU.Bootstrap
 {
@@ -37,7 +35,6 @@ namespace MPU.Bootstrap
 
         public static async Task RunApplication(ServiceProvider serviceProvider, string[] args)
         {
-            Console.WriteLine("Configuring LiveCharts...");
             ConfigureLiveCharts();
 
             var currentFrame = serviceProvider.GetService<CurrentFrame>();
@@ -70,9 +67,26 @@ namespace MPU.Bootstrap
         {
             LiveCharts.Configure(config =>
             {
-                config.HasMap<LiveChartsCore.Kernel.Coordinate>((coord, _) =>
+                config
+                .AddSkiaSharp()
+                .AddDefaultMappers()
+                .HasMap<LiveChartsCore.Kernel.Coordinate>((coord, _) =>
                     new LiveChartsCore.Kernel.Coordinate(coord.PrimaryValue, coord.SecondaryValue));
             });
+
+
+
+            //LiveCharts.Configure(config =>
+            //{
+            //    config
+            //    .AddSkiaSharp()
+            //    .AddDefaultMappers()
+            //    .HasMap<Entities.Common.ChartPoint>((point, chartPoint) =>
+            //    {
+            //        chartPoint = Convert.ToInt32(point.X);
+            //        chartPoint = Convert.ToInt32(point.Y);
+            //    });
+            //});
 
         }
     }

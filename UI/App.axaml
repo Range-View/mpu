@@ -3,7 +3,6 @@
              x:Class="UI.App"
              xmlns:local="using:UI.Tools"
              RequestedThemeVariant="Default">
-	<!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
 	<Application.DataTemplates>
 		<local:ViewLocator/>
@@ -12,4 +11,13 @@
 	<Application.Styles>
 		<FluentTheme />
 	</Application.Styles>
+
+	<Application.Resources>
+		<ResourceDictionary>
+			<Color x:Key="PrimaryColor">#0075ce</Color>
+			<SolidColorBrush x:Key="ForegroundBrush" Color="White" />
+			<SolidColorBrush x:Key="DarkTextBrush" Color="Black" />
+			<!-- Additional colors and brushes -->
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>

@@ -1,13 +1,10 @@
-﻿using Avalonia.Threading;
-using Entities.Frame;
+﻿using Entities.Frame;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using ReactiveUI;
 using SkiaSharp;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace UI.ViewModels.Components.Chart
 {
@@ -63,23 +60,37 @@ namespace UI.ViewModels.Components.Chart
             XAxes[0].MaxLimit = currentFrame.Range.Cols;
             YAxes[0].MaxLimit = currentFrame.Insights.MaxValue * 1.2;
 
-            var colorPalette = new[] { SKColors.Red, SKColors.Blue, SKColors.Green, SKColors.Purple };
+            var colorPalette = new[]
+                {
+                    SKColor.Parse("#FF6F61"), // Coral
+                    SKColor.Parse("#FFD700"), // Gold
+                    SKColor.Parse("#32CD32"), // Lime Green
+                    SKColor.Parse("#FF69B4"), // Hot Pink
+                    SKColor.Parse("#800080"), // Purple
+                    SKColor.Parse("#FFA500"), // Orange
+                    SKColor.Parse("#00CED1"), // Dark Turquoise
+                    SKColor.Parse("#FF4500"), // Orange Red
+                };
             int colorIndex = 0;
 
             foreach (var obj in currentFrame.Insights.DetectedObjects)
             {
-
                 var series = new LineSeries<LiveChartsCore.Kernel.Coordinate>
                 {
                     Values = obj.NormalizedPoints
                         .Select(p => new LiveChartsCore.Kernel.Coordinate(p.Y, p.X))
                         .ToList(),
-                    Stroke = new SolidColorPaint(colorPalette[colorIndex % colorPalette.Length], 3),
                     Fill = null,
-                    GeometryFill = new SolidColorPaint(SKColors.Transparent),
-                    GeometryStroke = new SolidColorPaint(SKColors.Transparent),
-                    TooltipLabelFormatter = null
+                    GeometrySize = 0,
+                    LineSmoothness = 0.65, 
+                    TooltipLabelFormatter = (chartPoint) => $"X: {chartPoint.SecondaryValue:F2}, Y: {chartPoint.PrimaryValue:F2}",
+                    AnimationsSpeed = TimeSpan.FromMilliseconds(300),
+                    EasingFunction = EasingFunctions.CubicOut,
+                    Stroke = null,
+                    GeometryStroke = new SolidColorPaint(colorPalette[colorIndex % colorPalette.Length]) { StrokeThickness = 5 }
+
                 };
+
 
                 Series.Add(series);
                 colorIndex++;

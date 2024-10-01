@@ -7,7 +7,7 @@
 		<vm:FooterViewModel />
 	</UserControl.DataContext>
 
-	<Border Background="#B763DF" Padding="10">
-		<TextBlock Foreground="#1E1E1E" Text="{Binding FooterText}" HorizontalAlignment="Center" FontSize="16"/>
+	<Border Background="{DynamicResource PrimaryColor}" Padding="10">
+		<TextBlock Foreground="{DynamicResource ForegroundBrush}" Text="{Binding FooterText}" HorizontalAlignment="Center" FontSize="16"/>
 	</Border>
 </UserControl>

@@ -3,10 +3,13 @@
              xmlns:local="using:UI.ViewModels.Components.Chart"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
              x:Class="UI.Views.Components.Chart.PeakChartView">
-	<UserControl.DataContext>
+	<!--<UserControl.DataContext>
 		<local:PeakChartViewModel />
-	</UserControl.DataContext>
-	<StackPanel>
-		<lvc:CartesianChart Series="{Binding Series}" YAxes="{Binding YAxes}" XAxes="{Binding XAxes}" Background="Orchid" Foreground="Brown" Width="600" Height="400"/>
-	</StackPanel>
+	</UserControl.DataContext>-->
+
+	<Grid>
+		<StackPanel>
+			<lvc:CartesianChart Series="{Binding Series}"  YAxes="{Binding YAxes}" XAxes="{Binding XAxes}"  Width="1200" Height="590"/>
+		</StackPanel>
+	</Grid>
 </UserControl>

@@ -1,6 +1,5 @@
 ﻿using Avalonia;
 using MPU.Bootstrap;
-using System.Threading.Tasks;
 
 namespace MPU
 {
