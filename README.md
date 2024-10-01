@@ -24,6 +24,6 @@ The MPU (Main Processing Unit) is designed to manage core processing tasks withi
   - **tools/** - Public Generic Helpers.
   - **resources/** - Static resources (json/txt).
   - `CMakeLists.txt` - Startup item.
-  - `MPU.cpp` - Entry point.
+  - `MPU.csproj` - Entry point.
   - `.gitignore`
  
